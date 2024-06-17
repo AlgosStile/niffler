@@ -44,3 +44,6 @@ build/
 .gradle
 /gradle
 
+### NPM
+.node_modules
+

@@ -55,7 +55,7 @@ spring:
   datasource:
     url: 'jdbc:postgresql://localhost:5432/niffler-spend'
     username: postgres
-    password: secret
+    password: admin
 grpc:
   client:
     grpcCurrencyClient:
@@ -79,7 +79,7 @@ spring:
   datasource:
     url: 'jdbc:postgresql://niffler-all-db:5432/niffler-spend'
     username: postgres
-    password: secret
+    password: admin
 grpc:
   client:
     grpcCurrencyClient:

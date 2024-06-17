@@ -58,7 +58,7 @@ spring:
       - 'org.springframework.cloud.vault.config.VaultReactiveAutoConfiguration'
   datasource:
     username: postgres
-    password: secret
+    password: admin
     url: 'jdbc:postgresql://localhost:5432/niffler-currency'
 ---
 spring:

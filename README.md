@@ -25,7 +25,7 @@
 - [Java 21](https://adoptium.net/en-GB/temurin/releases/)
 - [Gradle 8.6](https://docs.gradle.org/8.6/release-notes.html)
 - [GHA](https://docs.github.com/en/actions)
-- And much more:)
+- And more...
 
 
 **Схема проекта Niffler**
@@ -56,7 +56,7 @@
 После установки и запуска docker daemon необходимо убедиться в работе команд docker, например `docker -v`:
 
 ```posh
-User-MacBook-Pro ~ % docker -v
+% docker -v
 Docker version 20.10.14, build a224086
 ```
 
@@ -90,7 +90,7 @@ docker volume create pgdata
 Запустив скрипт (Для Windows необходимо использовать bash terminal: gitbash, cygwin или wsl)
 
 ```posh
-User-MacBook-Pro  niffler % bash localenv.sh
+niffler % bash localenv.sh
 ```
 
 Или выполнив последовательно команды, для *nix:
@@ -125,7 +125,8 @@ https://github.com/confluentinc/cp-docker-images/issues/801#issuecomment-6920851
 
 Например, DBeaver или Datagrip. Мы рекомендуем бесплатную PgAdmin 4.
 
-#### 6. Подключиться к БД postgres (host: localhost, port: 5432, user: postgres, pass: secret, database name: postgres) из PgAdmin и создать пустые БД микросервисов
+#### 6. Подключиться к БД postgres (host: localhost, port: 5432, user: postgres, pass: admin, database name: postgres) 
+#### из PgAdmin и создать пустые БД микросервисов
 
 ```sql
 create
@@ -143,7 +144,7 @@ create
 Версию установленной Java необходимо проверить командой `java -version`
 
 ```posh
-User-MacBook-Pro ~ % java -version
+% java -version
 openjdk version "21.0.1" 2023-10-17 LTS
 OpenJDK Runtime Environment Temurin-21.0.1+12 (build 21.0.1+12-LTS)
 OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
@@ -156,7 +157,7 @@ OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
 #### 8. Установить пакетый менеджер для сборки front-end npm
 
 [Инструкция](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-Рекомендованная версия Node.js - 18.13.0 (LTS)
+Рекомендованная версия Node.js - 21.0 (LTS)
 
 # Запуск Niffler локальное в IDE:
 
@@ -165,13 +166,13 @@ OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
 для REST:
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-frontend
+% cd niffler-frontend
 ```
 
 или для GraphQL:
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-frontend-gql
+% cd niffler-frontend-gql
 ```
 
 #### 2. Запустить фронтенд (сначала обновить зависимости)
@@ -186,8 +187,8 @@ User-MacBook-Pro niffler-frontend % npm run build:dev
 Для Windows:
 
 ```posh
-User-MacBook-Pro niffler-frontend % npm i
-User-MacBook-Pro niffler-frontend % npm run build:windows
+% npm i
+npm run build:windows
 ```
 
 #### 3. Прописать run конфигурацию для всех сервисов niffler-* - Active profiles local
@@ -200,14 +201,18 @@ User-MacBook-Pro niffler-frontend % npm run build:windows
 - Запустить сервис auth
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-auth
-User-MacBook-Pro niffler-auth % gradle bootRun --args='--spring.profiles.active=local'
+cd niffler-auth
+niffler-auth % gradle bootRun --args='--spring.profiles.active=local'
 ```
 
 Или просто перейдя к main-классу приложения NifflerAuthApplication выбрать run в IDEA (предварительно удостовериться что
 выполнен предыдущий пункт)
 
-#### 5  Запустить в любой последовательности другие сервисы: niffler-currency, niffler-spend, niffler-gateway, niffler-userdata
+#### 5  Запустить в любой последовательности другие сервисы: 
+#### niffler-currency; 
+#### niffler-spend; 
+#### niffler-gateway; 
+#### niffler-userdata.
 
 # Запуск Niffler в докере:
 
@@ -295,7 +300,7 @@ Build to Docker daemon failed, perhaps you should make sure your credentials for
 }
 ```
 
-# Создание своего docker repository для форка Niffler и сборка своих докер контейнеров
+# Создание своего docker repository Niffler и сборки своих докер контейнеров
 
 #### 1. Войти в свою УЗ на https://hub.docker.com/ и последовательно создать публичные репозитории
 
@@ -307,34 +312,35 @@ Build to Docker daemon failed, perhaps you should make sure your credentials for
 - niffler-currency
 - niffler-auth
 
-Допустим, что ваш username на https://hub.docker.com - *foobazz*
+Допустим, что ваш username на https://hub.docker.com - *algosstile*
 
-#### 2. заменить в файле docker.properties (в корне проекта) IMAGE_PREFIX=qaguru на IMAGE_PREFIX=foobazz
+#### 2. заменить в файле docker.properties (в корне проекта) IMAGE_PREFIX=qaguru на IMAGE_PREFIX=algosstile
 
-- где foobazz - ваш юзернэйм на https://hub.docker.com/
+- где algosstile - ваш юзернэйм на https://hub.docker.com/
 
-#### 3. заменить в файле build.gradle (в корне проекта) dockerHubName = "qaguru" на dockerHubName = "foobazz"
+#### 3. заменить в файле build.gradle (в корне проекта) dockerHubName = "qaguru" на dockerHubName = "algosstile"
 
-- где foobazz - ваш юзернэйм на https://hub.docker.com/
+- где algosstile - ваш юзернэйм на https://hub.docker.com/
 
 #### 4. Перейти в корневой каталог проекта
 
 ```posh
-User-MacBook-Pro niffler % cd niffler
+niffler % cd niffler
 ```
 
-#### 5. Собрать все имеджи, запушить и запустить niffler одной командой, если необходим фронтенд GraphQL, то это указывается аргументом к скрипту:
+#### 5. Собрать все имеджи, запушить и запустить niffler одной командой, если необходим фронтенд GraphQL, 
+#### то это указывается аргументом к скрипту:
 
 для REST:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-dev.sh push
+niffler % bash docker-compose-dev.sh push
 ```
 
 для GraphQL:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-dev.sh gql push
+niffler % bash docker-compose-dev.sh gql push
 ```
 
 # Запуск e-2-e тестов в Docker network изолированно Niffler в докере:
@@ -342,7 +348,7 @@ User-MacBook-Pro  niffler % bash docker-compose-dev.sh gql push
 #### 1. Перейти в корневой каталог проекта
 
 ```posh
-User-MacBook-Pro niffler % cd niffler
+% cd niffler
 ```
 
 #### 2. Запустить все сервисы и тесты, если необходим фронтенд GraphQL, то это указывается аргументом к скрипту:
@@ -350,16 +356,17 @@ User-MacBook-Pro niffler % cd niffler
 для REST:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-e2e.sh
+niffler % bash docker-compose-e2e.sh
 ```
 
 для GraphQL:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-e2e.sh gql
+niffler % bash docker-compose-e2e.sh gql
 ```
 
 #### 3. Selenoid UI доступен по адресу: http://localhost:9090/
 
-#### 4. Allure доступен по адресу: http://localhost:5050/allure-docker-service/projects/niffler-e-2-e-tests/reports/latest/index.html
+#### 4. Allure доступен по адресу: 
+#### http://localhost:5050/allure-docker-service/projects/niffler-e-2-e-tests/reports/latest/index.html
 
