@@ -70,7 +70,7 @@ public class ApiLoginExtension implements BeforeEachCallback, ParameterResolver 
 
             UserJson userToLogin;
             if (generateUserAnnotation.handleAnnotation()) {
-                userToLogin = AbstractCreateUserExtension.createdUsers(context, NESTED).getFirst();
+                userToLogin = AbstractCreateUserExtension.createdUsers(context, NESTED).get(0);
             } else {
                 userToLogin = new UserJson(apiLoginAnnotation.username(), new TestData(
                         apiLoginAnnotation.password(),

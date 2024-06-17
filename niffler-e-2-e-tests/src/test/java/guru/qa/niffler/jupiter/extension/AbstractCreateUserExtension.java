@@ -84,7 +84,7 @@ public abstract class AbstractCreateUserExtension implements BeforeEachCallback,
 
         return parameterContext.getParameter().getType().isAssignableFrom(UserJson[].class)
                 ? storedUsers.toArray(new UserJson[0])
-                : storedUsers.getFirst();
+                : storedUsers.get(0);
     }
 
     @SuppressWarnings("unchecked")

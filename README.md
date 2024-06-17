@@ -304,13 +304,16 @@ Build to Docker daemon failed, perhaps you should make sure your credentials for
 
 #### 1. Войти в свою УЗ на https://hub.docker.com/ и последовательно создать публичные репозитории
 
+- niffler-auth
+- niffler-currency
+- niffler-e-2-e-tests
 - niffler-frontend
 - niffler-frontend-gql
-- niffler-userdata
-- niffler-spend
 - niffler-gateway
-- niffler-currency
-- niffler-auth
+- niffler-grpc-common
+- niffler-spend
+- niffler-userdata
+
 
 Допустим, что ваш username на https://hub.docker.com - *algosstile*
 
