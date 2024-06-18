@@ -25,7 +25,7 @@
 - [Java 21](https://adoptium.net/en-GB/temurin/releases/)
 - [Gradle 8.6](https://docs.gradle.org/8.6/release-notes.html)
 - [GHA](https://docs.github.com/en/actions)
-- And more...
+- [And more...](https://docs.github.com)
 
 
 **Схема проекта Niffler**
@@ -34,17 +34,17 @@
 
 # Минимальные предусловия для работы с проектом Niffler
 
-#### 0. Если у вас ОС Windows
+#### Если у вас ОС Windows
 
 Во-первых, и в-главных, необходимо использовать bash terminal, а не powershell.
 Во-вторых, для запуска фронтенда локально необходимо использовать команду
 `npm run build:windows`, если не работает стандартная команда `npm run build:dev`
-В-третьих, если у вас что-то не работает - пишите в TG чат группы - будем вместе дополнять README, т.к. изначально
-проект разработан под nix
+
 
 #### 1. Установить docker (Если не установлен)
 
-Мы будем использовать docker для БД (Postgres), кроме того, будем запускать микросервисы в едином docker network при
+В этом проекте используется docker для БД (Postgres).
+Запускаются микросервисы в едином docker network при
 помощи docker-compose
 
 [Установка на Windows](https://docs.docker.com/desktop/install/windows-install/)
@@ -123,10 +123,11 @@ https://github.com/confluentinc/cp-docker-images/issues/801#issuecomment-6920851
 
 #### 5. Установить одну из программ для визуальной работы с Postgres
 
-Например, DBeaver или Datagrip. Мы рекомендуем бесплатную PgAdmin 4.
+Например, бесплатную PgAdmin 4.
 
 #### 6. Подключиться к БД postgres (host: localhost, port: 5432, user: postgres, pass: admin, database name: postgres) 
 #### из PgAdmin и создать пустые БД микросервисов
+#### Во избежание возможных конфликтов, рекомендую создавать каждую БД по отдельности!
 
 ```sql
 create
@@ -139,12 +140,16 @@ create
     database "niffler-auth" with owner postgres;
 ```
 
-#### 7. Установить Java версии 21. Это необходимо, т.к. проект использует синтаксис Java 21
+#### 7. Установить Java версии не ниже 17, но рекомендую 21. 
+#### На проекте используется синтаксис Java 21!
 
 Версию установленной Java необходимо проверить командой `java -version`
 
 ```posh
 % java -version
+
+Терминал должен выдать:
+______________________
 openjdk version "21.0.1" 2023-10-17 LTS
 OpenJDK Runtime Environment Temurin-21.0.1+12 (build 21.0.1+12-LTS)
 OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
@@ -180,8 +185,8 @@ OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
 Для *nix:
 
 ```posh
-User-MacBook-Pro niffler-frontend % npm i
-User-MacBook-Pro niffler-frontend % npm run build:dev
+niffler-frontend % npm i
+niffler-frontend % npm run build:dev
 ```
 
 Для Windows:
@@ -205,8 +210,8 @@ cd niffler-auth
 niffler-auth % gradle bootRun --args='--spring.profiles.active=local'
 ```
 
-Или просто перейдя к main-классу приложения NifflerAuthApplication выбрать run в IDEA (предварительно удостовериться что
-выполнен предыдущий пункт)
+Или просто перейдя к main-классу приложения NifflerAuthApplication выбрать run в IDEA (предварительно удостовериться,
+что выполнен предыдущий пункт).
 
 #### 5  Запустить в любой последовательности другие сервисы: 
 #### niffler-currency; 
@@ -231,7 +236,7 @@ niffler-auth % gradle bootRun --args='--spring.profiles.active=local'
 - gateway:   127.0.0.1 gateway.niffler.dc
 
 ```posh
-User-MacBook-Pro niffler % vi /etc/hosts
+niffler % vi /etc/hosts
 ```
 
 ```posh
@@ -250,7 +255,7 @@ User-MacBook-Pro niffler % vi /etc/hosts
 #### 5. Перейти в корневой каталог проекта
 
 ```posh
-User-MacBook-Pro niffler % cd niffler
+niffler % cd niffler
 ```
 
 #### 6. Запустить все сервисы, если необходим фронтенд GraphQL, то это указывается аргументом к скрипту:
@@ -258,23 +263,21 @@ User-MacBook-Pro niffler % cd niffler
 для REST:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-dev.sh
+niffler % bash docker-compose-dev.sh
 ```
 
 для GraphQL:
 
 ```posh
-User-MacBook-Pro  niffler % bash docker-compose-dev.sh gql
+niffler % bash docker-compose-dev.sh gql
 ```
 
 Текущая версия `docker-compose-dev.sh` **удалит все запущенные Docker контейнеры в системе**, поэтому если у вас есть
-созданные
-контейнеры для других проектов - отредактируйте строку ```posh docker rm $(docker ps -a -q)```, чтобы включить в grep
+созданные контейнеры для других проектов - отредактируйте строку ```posh docker rm $(docker ps -a -q)```, чтобы включить в grep
 только те контейнеры, что непосредственно относятся к niffler.
 
 Niffler при запуске в докере будет работать для вас по адресу http://frontend.niffler.dc:80, этот порт НЕ НУЖНО
-указывать
-в браузере, таким образом переходить напрямую по ссылке http://frontend.niffler.dc
+указывать в браузере, таким образом переходить напрямую по ссылке http://frontend.niffler.dc
 
 Если при выполнении скрипта вы получили ошибку
 
@@ -289,7 +292,7 @@ Build to Docker daemon failed, perhaps you should make sure your credentials for
 При наличии такого ключа в json, его надо удалить.
 Если файл пустой, то возможно не выполнен `docker login`. Если выполнялся, то надо создать файл руками по
 пути `$USER/.docker/config.json`
-с содержимым,
+с содержимым:
 
 ```
  {
@@ -372,4 +375,18 @@ niffler % bash docker-compose-e2e.sh gql
 
 #### 4. Allure доступен по адресу: 
 #### http://localhost:5050/allure-docker-service/projects/niffler-e-2-e-tests/reports/latest/index.html
+
+#### UPD. После сборки вы можете увидеть в терминале следующее сообщение: 
+`DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/ `
+Это говорит о том, что вскоре
+используемый метод сборки образов Docker deprecated - будет удален в будущих версиях. 
+Вам рекомендуется установить компонент buildx для сборки образов с использованием BuildKit, который является 
+более новым и эффективным инструментом сборки.
+
+#### Решение:
+Нужно скачать с github `buildx` по этой ссылке: https://github.com/docker/buildx/releases/tag/v0.15.0
+Скачанный файл положить по пути C:\Program Files\Docker\cli-plugins далее docker сам сделает оставшуюся работу за вас!
+
 
