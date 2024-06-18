@@ -7,7 +7,7 @@ services:
     environment:
       - POSTGRES_MULTIPLE_DATABASES="niffler-auth","niffler-currency","niffler-spend","niffler-userdata"
       - PGUSER=postgres
-      - POSTGRES_PASSWORD=secret
+      - POSTGRES_PASSWORD=admin
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d
     healthcheck:

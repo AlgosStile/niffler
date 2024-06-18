@@ -72,7 +72,7 @@ services:
 
   currency.niffler.dc:
     container_name: currency.niffler.dc
-    image: adven27/grpc-wiremock:latest              # https://github.com/Adven27/grpc-wiremock
+    image: algosstile/grpc-wiremock:latest              # https://github.com/Algosstile/grpc-wiremock
     volumes:
       - ./wiremock/grpc:/wiremock                     #stubs
       - ./niffler-grpc-common/src/main/proto:/proto   #proto
@@ -121,18 +121,6 @@ services:
     volumes:
       - ./wiremock/rest:/home/wiremock
     dns_search: .
-
-  #  userdata.niffler.dc:
-  #    container_name: userdata.niffler.dc
-  #    image: ${PREFIX}/niffler-userdata-${PROFILE}:latest
-  #    expose:
-  #      - "8089"
-  #    depends_on:
-  #      auth.niffler.dc:
-  #        condition: service_healthy
-  #    networks:
-  #      - test-network
-  #    dns_search: .
 
   frontend.niffler.dc:
     container_name: frontend.niffler.dc
