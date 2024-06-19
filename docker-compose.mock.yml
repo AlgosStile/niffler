@@ -72,7 +72,7 @@ services:
 
   currency.niffler.dc:
     container_name: currency.niffler.dc
-    image: algosstile/grpc-wiremock:latest            # https://github.com/Algosstile/grpc-wiremock
+    image: algosstile/grpc-wiremock:latest            # https://github.com/Algosstile/Grpc-wiremock
     volumes:
       - ./wiremock/grpc:/wiremock                     #stubs
       - ./niffler-grpc-common/src/main/proto:/proto   #proto
