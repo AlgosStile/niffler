@@ -46,3 +46,4 @@ cd ../
 docker images
 FRONT_IMAGE="$front_image" PREFIX="${IMAGE_PREFIX}" PROFILE="${PROFILE}" docker-compose up -d
 docker ps -a
+

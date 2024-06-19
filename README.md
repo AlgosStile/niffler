@@ -276,8 +276,9 @@ niffler % bash docker-compose-dev.sh
 niffler % bash docker-compose-dev.sh gql
 ```
 
-Текущая версия `docker-compose-dev.sh` **удалит все запущенные Docker контейнеры в системе**, поэтому если у вас есть
-созданные контейнеры для других проектов - отредактируйте строку ```posh docker rm $(docker ps -a -q)```, чтобы включить в grep
+Текущая версия `docker-compose-dev.sh` **удалит все запущенные Docker контейнеры в системе**, 
+поэтому если у вас есть созданные контейнеры для других проектов
+то отредактируйте строку ```posh docker rm $(docker ps -a -q)```, чтобы включить в grep
 только те контейнеры, что непосредственно относятся к niffler.
 
 Niffler при запуске в докере будет работать для вас по адресу http://frontend.niffler.dc:80, этот порт НЕ НУЖНО
@@ -313,11 +314,9 @@ Build to Docker daemon failed, perhaps you should make sure your credentials for
 
 - niffler-auth
 - niffler-currency
-- niffler-e-2-e-tests
 - niffler-frontend
 - niffler-frontend-gql
 - niffler-gateway
-- niffler-grpc-common
 - niffler-spend
 - niffler-userdata
 
